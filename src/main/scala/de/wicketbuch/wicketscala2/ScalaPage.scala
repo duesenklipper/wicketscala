@@ -9,9 +9,9 @@ package de.wicketbuch.wicketscala2 {
   import org.apache.wicket.Component
   import org.wicketstuff.scala.SLink
   import org.apache.wicket.model.Model
+  import ScalaHelpers._
 
   class ScalaPage extends WebPage {
-    import ScalaHelpers._
 
     val alterForm = new Form("alterForm")
     add(alterForm)
@@ -26,14 +26,14 @@ package de.wicketbuch.wicketscala2 {
 
     alterForm.add(alterField)
 
-    alterField.add(behavior.onComponentTag({ (c, tag) =>
-      tag.put("style", if (alterModel.getObject() >= 18) "background-color:#88ee88" else "background-color:#ee8888")
-    }))
-
     add(new Label("showAlter", alterModel))
 
     add(new Label("showVolljaehrig", readModel(if (alterModel.getObject() >= 18) "Volljährig" else "Minderjährig")))
 
     add(new SLink("incrementor", { alterModel.setObject(alterModel.getObject() + 1) }))
+
+    alterField.add(behavior.onComponentTag({ (c, tag) =>
+      tag.put("style", if (alterModel.getObject() >= 18) "background-color:#88ee88" else "background-color:#ee8888")
+    }))
   }
 }

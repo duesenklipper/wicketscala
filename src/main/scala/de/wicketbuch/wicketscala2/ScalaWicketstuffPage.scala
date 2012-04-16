@@ -25,17 +25,16 @@ package de.wicketbuch.wicketscala2 {
 
     alterForm.add(alterField)
 
+    add(new Label("showAlter", alterModel))
+
+    add(new Label("showVolljaehrig", { if (alterModel.getObject() >= 18) "Volljährig" else "Minderjährig" }))
+
+    add(new SLink("incrementor", { alterModel.setObject(alterModel.getObject() + 1) }))
+
     alterField.add(new Behavior() {
       override def onComponentTag(c: Component, tag: ComponentTag) {
         tag.put("style", if (alterModel.getObject() >= 18) "background-color:#88ee88" else "background-color:#ee8888")
       }
     })
-
-    add(new Label("showAlter", alterModel))
-
-    add(new SLabel("showVolljaehrig", if (alterModel.getObject() >= 18) "Volljährig" else "Minderjährig"))
-
-    add(new SLink("incrementor", { alterModel.setObject(alterModel.getObject() + 1) }))
   }
-
 }
