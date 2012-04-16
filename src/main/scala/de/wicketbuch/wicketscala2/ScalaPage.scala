@@ -26,11 +26,9 @@ package de.wicketbuch.wicketscala2 {
 
     alterForm.add(alterField)
 
-    alterField.add(new Behavior() {
-      override def onComponentTag(c: Component, tag: ComponentTag) {
-        tag.put("style", if (alterModel.getObject() >= 18) "background-color:#88ee88" else "background-color:#ee8888")
-      }
-    })
+    alterField.add(behavior.onComponentTag({ (c, tag) =>
+      tag.put("style", if (alterModel.getObject() >= 18) "background-color:#88ee88" else "background-color:#ee8888")
+    }))
 
     add(new Label("showAlter", alterModel))
 

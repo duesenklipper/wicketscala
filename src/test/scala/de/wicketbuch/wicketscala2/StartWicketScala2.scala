@@ -5,7 +5,7 @@ import org.mortbay.jetty.Server
 import org.mortbay.jetty.bio.SocketConnector
 import org.mortbay.jetty.webapp.WebAppContext
 
-object Start {
+object StartWicketScala2 {
 
   def main(args: Array[String]) {
     val server = new Server()
